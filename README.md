@@ -11,37 +11,21 @@ A terminal calculator for arithmetic, powers, and common math functions.
 - Reuse the previous result with `ans`
 - Clear memory with `clear` or exit with `quit`
 
-## Installation
+## Get the files
 
-Install from PyPI:
-
-```bash
-python -m pip install calculator-tui
-```
-
-Or install from the GitHub source:
+Clone the GitHub repository and enter its folder:
 
 ```bash
 git clone https://github.com/13DoesPython/advanced-calculator.git
 cd advanced-calculator
-python -m pip install .
 ```
 
 ## Usage
 
-Start the calculator in a terminal:
+From inside the cloned `advanced-calculator` folder, run `calc_tui.py`:
 
 ```bash
-calculator-tui
+python calc_tui.py
 ```
 
-At the prompt, enter an equation and press Enter. For example:
-
-```text
-[Formula/Command]: 2 + 3
-Result: 5
-[Formula/Command]: ans * 2
-Result: 10
-```
-
-Use `^` for powers, such as `4^2`, and call functions like `sqrt(81)` or `sin(pi / 2)`. Enter `clear` to reset the saved answer, or `quit` to exit.
+At the prompt, enter an equation and press Enter. For example, `2 + 3` returns `5`. Use `ans` to reuse the last result, `clear` to reset memory, or `quit` to exit. The program requires Python 3.10 or newer and Colorama.
