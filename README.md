@@ -16,10 +16,10 @@ To install the advanced calculator, you can clone the repository from GitHub:
 git clone https://github.com/13DoesPython/advanced-calculator.git
 ```
 
-Or you can download it via pip:
+Or install it from PyPI:
 
 ```bash
-pip install advanced-calculator
+python -m pip install advanced-calc
 ```
 
 ### Usage
@@ -29,12 +29,11 @@ To use the advanced calculator, simply run the program in your terminal or comma
 python advanced_calc.py
 ```
 
-Or, if you installed it via pip, you can run it directly:
+If installed from PyPI, launch it with:
 
 ```bash
-import advanced_calc
+advanced-calc
 ```
-Then run the file.
 
 ### Version History
 - 1.0.0
