@@ -1,40 +1,36 @@
-## Advanced calculator
+# Calculator TUI
 
-This is an advanced TUI program for a calculator that can perform various mathematical operations, including addition, subtraction, multiplication, division, exponentiation, and more. It also supports complex numbers, trigonometric functions, logarithms, and other advanced mathematical functions. For the best experience, it is recommended to use this calculator in a programming environment that supports Python. 
+A terminal calculator for arithmetic, powers, and common math functions.
 
-### Features
-- Basic arithmetic operations: addition, subtraction, multiplication, division
-- Exponentiation and roots
-- Support for complex numbers
-- Trigonometric functions: sine, cosine, tangent, etc.
-- Logarithmic functions: natural log, base 10 log, etc.
+## Features
 
-### Installation
-To install the advanced calculator, you can clone the repository from GitHub:
+- Basic arithmetic and parentheses
+- Powers with `^` and square roots with `sqrt()`
+- Trigonometric functions: `sin()`, `cos()`, and `tan()`
+- `log()`, plus the constants `pi` and `e`
+- Reuse the previous result with `ans`
+- Clear memory with `clear` or exit with `quit`
+
+## Installation
+
+Install from PyPI:
+
+```bash
+python -m pip install calculator-tui
+```
+
+Or install from the GitHub source:
 
 ```bash
 git clone https://github.com/13DoesPython/advanced-calculator.git
+cd advanced-calculator
+python -m pip install .
 ```
 
-Or install it from PyPI:
+## Usage
+
+After installing, start the calculator with:
 
 ```bash
-python -m pip install advanced-calc
+calculator-tui
 ```
-
-### Usage
-To use the advanced calculator, simply run the program in your terminal or command prompt once you have cloned the repository:
-
-```bash
-python advanced_calc.py
-```
-
-If installed from PyPI, launch it with:
-
-```bash
-advanced-calc
-```
-
-### Version History
-- 1.0.0
-  - Initial release with basic arithmetic operations and support for complex numbers.
