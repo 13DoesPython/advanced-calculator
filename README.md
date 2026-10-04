@@ -29,8 +29,19 @@ python -m pip install .
 
 ## Usage
 
-After installing, start the calculator with:
+Start the calculator in a terminal:
 
 ```bash
 calculator-tui
 ```
+
+At the prompt, enter an equation and press Enter. For example:
+
+```text
+[Formula/Command]: 2 + 3
+Result: 5
+[Formula/Command]: ans * 2
+Result: 10
+```
+
+Use `^` for powers, such as `4^2`, and call functions like `sqrt(81)` or `sin(pi / 2)`. Enter `clear` to reset the saved answer, or `quit` to exit.
