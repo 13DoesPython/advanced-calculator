@@ -9,7 +9,7 @@ def evaluate_expression(expression: str):
     allowed_chars = set("0123456789+-*/().,^ ")
     words = "".join(c if c.isalpha() else " " for c in expression).split()
 
-    allowed_words = {"sin", "cos", "tan", "sqrt", "log", "pi", "e", "ans"}
+    allowed_words = {"sin", "cos", "tan", "sqrt", "log", "pi", "e", "ans", "factorial"}
     for word in words:
         if word not in allowed_words:
             raise ValueError(f"Unknown function or variable: '{word}")
@@ -26,6 +26,7 @@ def evaluate_expression(expression: str):
         "log": math.log,
         "pi": math.pi,
         "e": math.e,
+        "factorial": math.factorial,
         "ans": LAST_ANS
     }
 
@@ -33,6 +34,25 @@ def evaluate_expression(expression: str):
     return eval(evaluated_expression, {"__builtins__": {}}, safe_dict)
 
 LAST_ANS = 0.0
+
+def help_menu():
+    if sys.stdout.isatty():
+        sys.stdout.write("\x1b[3J")
+        sys.stdout.flush()
+    os.system("cls" if os.name == "nt" else "clear")
+    print(Fore.CYAN + "=" * 50)
+    print(Style.BRIGHT + Fore.CYAN + "Help Guide".center(50))
+    print(Fore.CYAN + "=" * 50)
+    print("- Basic arithmetic: Use +, -, *, / for addition, subtraction, multiplication, and division.")
+    print("- Power: Use ^ for exponentiation. Example: 2^3 = 8")
+    print("- Square root: Use sqrt(). Example: sqrt(16) = 4")
+    print("- Factorial: Use factorial(). Example: factorial(5) = 120")
+    print("- Trigonometric functions: sin(), cos(), tan() accept radians. Example: sin(pi/2) = 1")
+    print("- Logarithm: Use log() for natural logarithm. Example: log(e) = 1")
+    print("- Constants: Use pi and e for mathematical constants.")
+    print("- Memory: Use 'ans' to refer to the last answer.")
+    print("- Commands: Type 'quit' to exit or 'clear' to reset memory.")
+    print(Fore.CYAN + "=" * 50)
 
 def print_menu():
     if sys.stdout.isatty():
@@ -48,6 +68,7 @@ def print_menu():
     print("- Irrational numbers! pi and e")
     print("- Commands! 'quit' to quit and 'clear' to clear memory")
     print("- Use 'ans' to go back to the last answer!")
+    print("- Full help guide with command 'help'")
     print(Fore.CYAN + "=" * 50)
 
 def main():
@@ -61,7 +82,7 @@ def main():
             print(message_color + message)
 
         try:
-            user_input = input(Fore.CYAN + "[Formula/Command]: ").strip().lower()
+            user_input = input(Fore.CYAN + "[Formula/Command]: " + Fore.WHITE).strip().lower()
 
             if user_input == "quit":
                 sys.exit(0)
@@ -69,6 +90,11 @@ def main():
             if user_input == "clear":
                 LAST_ANS = 0
                 message = "Memory cleared!"
+                continue
+
+            if user_input == "help":
+                help_menu()
+                input(Fore.CYAN + "Press Enter to return to the main menu...")
                 continue
             
             result = evaluate_expression(user_input)
