@@ -31,7 +31,12 @@ def evaluate_expression(expression: str):
     }
 
     evaluated_expression = expression.replace("^", "**")
-    return eval(evaluated_expression, {"__builtins__": {}}, safe_dict)
+    result = eval(evaluated_expression, {"__builtins__": {}}, safe_dict)
+
+    if callable(result):
+        raise ValueError("Call the function with parentheses, like sin(pi / 2).")
+
+    return result
 
 LAST_ANS = 0.0
 
@@ -62,8 +67,8 @@ def print_menu():
     print(Fore.CYAN + "=" * 50)
     print(Style.BRIGHT + Fore.CYAN + "Advanced terminal calculator".center(50))
     print(Fore.CYAN + "=" * 50)
-    print("- Basic arithmetic equations! '1 + 1 / 2")
-    print("- Power and square root! '4^2 + sqrt(16)")
+    print("- Basic arithmetic equations! '1 + 1 / 2'")
+    print("- Power and square root! '4^2 + sqrt(16)'")
     print("- Math functions! sin(), cos(), tan(), log()")
     print("- Irrational numbers! pi and e")
     print("- Commands! 'quit' to quit and 'clear' to clear memory")
@@ -98,15 +103,19 @@ def main():
                 continue
             
             result = evaluate_expression(user_input)
-
-            if isinstance(result, float) and result.is_integer():
-                result = int(result)
-            if isinstance(result, float):
-                result = round(result, 6)
-                
-            message = f"Result: {result}"
             LAST_ANS = result
 
+            display_result = result
+            if isinstance(display_result, float):
+                if display_result.is_integer():
+                    display_result = int(display_result)
+                else:
+                    display_result = round(display_result, 6)
+                
+            message = f"Result: {display_result}"
+
+        except EOFError:
+            return
         except ZeroDivisionError:
             message = "Error: Cannot divide by zero!"
         except (ValueError, SyntaxError) as e:

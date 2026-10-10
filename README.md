@@ -6,10 +6,12 @@ A terminal calculator for arithmetic, powers, and common math functions.
 
 - Basic arithmetic and parentheses
 - Powers with `^` and square roots with `sqrt()`
+- Factorials with `factorial()`
 - Trigonometric functions: `sin()`, `cos()`, and `tan()`
 - `log()`, plus the constants `pi` and `e`
 - Reuse the previous result with `ans`
 - Clear memory with `clear` or exit with `quit`
+- Help menu with `help` command
 
 ## Get the files
 
@@ -32,6 +34,7 @@ At the prompt, enter an equation and press Enter. For example, `2 + 3` returns `
 
 ## Version history
 
+- 0.2.1: Bug fixes and improvements
 - 0.2.0:
     - Added help menu for user guidance
     - Added input prompt color for better visibility
